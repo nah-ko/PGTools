@@ -1,0 +1,17 @@
+# Base container
+FROM debian
+
+# Who is the maintener ?
+MAINTAINER Christophe Truffier <christophe.truffier@dalibo.com>
+
+# Before next command, we need two tools
+RUN apt-get update
+RUN apt-get -y install wget gnupg2
+# Get the repository key
+RUN wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add -
+# Copy Postgresql community source list
+COPY stretch-pgdg.list /etc/apt/sources.list.d/
+# Update again & install tools
+RUN apt-get update
+RUN apt-get -y install pgcluu pgbadger
+

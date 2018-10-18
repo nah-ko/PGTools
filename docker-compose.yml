@@ -1,0 +1,9 @@
+version: "2"
+
+services:
+   PostgreSQLTools:
+      build:
+         context: .
+         dockerfile: Dockerfile.debian
+      image: nah-ko/pgtools
+    
